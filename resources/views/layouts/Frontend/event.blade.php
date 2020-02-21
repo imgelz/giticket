@@ -23,7 +23,7 @@
 
     <style>
         .destination .img-2 {
-            height: 150px;
+            height: 200px;
         }
         #section-counter:after {
             opacity: .3;

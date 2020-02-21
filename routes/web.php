@@ -60,10 +60,5 @@ Route::group(['prefix' => 'penjual'], function () {
     Route::get('/', function () {
         return view('Backend.Penjual.index');
     });
-    Route::get('/artikel', 'ArtikelController@index');
-    Route::get('/artikel/{id}/edit', 'ArtikelController@edit');
-    Route::post('/artikel-store', 'ArtikelController@store');
-    Route::get('/kategori', 'KategoriController@index');
-    Route::post('/kategori-store', 'KategoriController@store');
-    Route::get('/kategori/{id}/edit', 'KategoriController@edit');
+    Route::get('/event', 'EventController@index');
 });

@@ -25,32 +25,42 @@
     <section class="ftco-section">
     	<div class="container-fluid">
     		<div class="row">
-    			<div class="col-md-3 ftco-animate">
-    				<div class="destination tiket">
-    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(/frontend/images/konser.jpg);">
-    						{{-- <div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-link"></span>
-    						</div> --}}
-    					</a>
-    					<div class="text p-3">
-    						<div class="d-flex">
-    							<div class="one">
-		    						<h3><b>Comedy Festival</b></h3>
-	    						</div>
-	    						<div class="two">
-	    							<span class="price"></span>
-    							</div>
-                            </div>
+                <div class="col-lg-3 col-6" style="margin-bottom:1rem">
+                    <div class="small-box card" style="border:1px solid #71707085">
+                        <a href=""><img class="card-img-top" src="/frontend/images/konser.jpg" alt="Card image cap" style="height:170px"></a>
+                        <div class="card-body fade-in">
+                            <h5 class="card-title" style="margin-bottom:-0.5rem">Card Title</h5>
                             <br>
-    						<p>19 Desember 2019</p>
-                            <p>09:00 AM - 02:00 PM</p>
-                            <p>Braga CityWalk ,Bandung</p>
-    						<hr style="color: #bdbdbd">
-    						<p class="bottom-area d-flex">
-    							<span style="color:burlywood"><i class="icon-map-o" style="color:brown"></i> Comedy Show</span>
-    							<span class="ml-auto"><a href="#">Detail</a></span>
-    						</p>
-    					</div>
+                            <div class="row">
+                                <div class="col-sm" style="margin-bottom:0.5rem">
+                                    <small style="margin-left:; color:#e86b32">Kategori</small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1" style="">
+                                    <img src="/frontend/icon/calendar.png" width="20px">
+                                </div>
+                                <div class="col-sm" style="">
+                                    <span style="margin-left:; color:#948e8e">20 Feb 2020 - 25 Feb 2020</span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:0.5rem">
+                                <div class="col-sm-1" style="">
+                                    <img src="/frontend/icon/clock.png" width="20px">
+                                </div>
+                                <div class="col-sm" style="">
+                                    <span style="margin-left:; color:#948e8e">09:00 - 10:00  WIB</span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:0.5rem">
+                                <div class="col-sm-1" style="">
+                                    <img src="/frontend/icon/pin.png" width="20px">
+                                </div>
+                                <div class="col-sm" style="">
+                                    <span style="margin-left:; color:#948e8e">Gedung Sasana Budaya Ganesha,Bandung</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
     		</div>

@@ -143,8 +143,8 @@
                 // Get the field name
                 var quantity = parseInt($('#quantity').val());
                     $('#quantity').val(quantity + 1);
-                    if(quantity==5){
-                        $('#quantity').val(quantity =5);
+                    if(quantity==3){
+                        $('#quantity').val(quantity =3);
                         $('.quantity-right-plus').prop('disabled')
                     // if(quantity<5){
                     //     $('#quantity').val(quantity <5);

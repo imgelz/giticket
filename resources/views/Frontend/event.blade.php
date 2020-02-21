@@ -96,29 +96,42 @@
     	</div>
     	<div class="container-fluid">
     		<div class="row">
-    			<div class="col-md-3 ftco-animate">
-    				<div class="destination tiket">
-    					<a class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(/frontend/images/konser.jpg);">
-    						{{-- <div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-link"></span>
-    						</div> --}}
-                        </a>
-    					<div class="text p-3">
-    						<div class="d-flex">
-                                <h3><p>Comedy Festival</p></h3>
+                <div class="col-lg-3 col-6" style="margin-bottom:1rem">
+                    <div class="small-box card" style="border:1px solid #71707085">
+                        <a href=""><img class="card-img-top" src="/frontend/images/konser.jpg" alt="Card image cap" style="height:170px"></a>
+                        <div class="card-body fade-in">
+                            <h5 class="card-title" style="margin-bottom:-0.5rem">Card Title</h5>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm" style="margin-bottom:0.5rem">
+                                    <small style="margin-left:; color:#e86b32">Kategori</small>
+                                </div>
                             </div>
-                            <div class="d-flex">
-                                <small class="kategori" style="color:#e86b32">Kategori</small>
+                            <div class="row">
+                                <div class="col-sm-1" style="">
+                                    <img src="/frontend/icon/calendar.png" width="20px">
+                                </div>
+                                <div class="col-sm" style="">
+                                    <span style="margin-left:; color:#948e8e">20 Feb 2020 - 25 Feb 2020</span>
+                                </div>
                             </div>
-                                <img class="lol" src="/frontend/icon/calendar.png" width="20px">  <span>20 Feb 2020 - 21 Feb 2020</span>
-                                <br>
-                                <img class="lol" src="/frontend/icon/clock.png" width="20px">  <span>09:00 - 20:00 WIB</span><br>
-    						<hr style="color: #bdbdbd">
-    						<p class="bottom-area d-flex">
-    							<span style="color:gray"><img src="/frontend/icon/pin.png" class="lol" width="20px"></i> Alamat Palsu</span>
-    							<span class="ml-auto"><a href="#">Detail</a></span>
-    						</p>
-    					</div>
+                            <div class="row" style="margin-top:0.5rem">
+                                <div class="col-sm-1" style="">
+                                    <img src="/frontend/icon/clock.png" width="20px">
+                                </div>
+                                <div class="col-sm" style="">
+                                    <span style="margin-left:; color:#948e8e">09:00 - 10:00  WIB</span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:0.5rem">
+                                <div class="col-sm-1" style="">
+                                    <img src="/frontend/icon/pin.png" width="20px">
+                                </div>
+                                <div class="col-sm" style="">
+                                    <span style="margin-left:; color:#948e8e">Gedung Sasana Budaya Ganesha,Bandung</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
     		</div>
