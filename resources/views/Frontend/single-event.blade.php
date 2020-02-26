@@ -70,8 +70,13 @@
     <br>
     <div class="card">
         <div class="card-body">
-            <div class="tiketnya">
-                <b style="font-size:1.8rem; color:#686868">Presale Ticket</b>
+            <div class="row">
+                <div class="col-11 tiketnya">
+                    <b style="font-size:1.8rem; color:#686868">Presale Ticket</b>
+                </div>
+                <div class="col-1">
+                    <a class="badge badge-danger" style="color:white">HABIS</a>
+                </div>
             </div>
             <hr>
             <div class="destik">

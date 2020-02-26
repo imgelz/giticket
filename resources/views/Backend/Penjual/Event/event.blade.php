@@ -2,24 +2,26 @@
 
 @section('content')
 
-    <div class="content-wrapper" style="background:transparent">
-    <!-- Content Header (Page header) -->
-        <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Daftar Event Saya</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <a style="float:right" href=""><button style="background-color:#007bff; color:white" class="btn btn-lg">Buat Event</button></a>
-            </div>
-            </div><!-- /.row -->
-            <hr style="border: 3px solid #a7a7a7">
-        </div><!-- /.container-fluid -->
-        </div>
-    <!-- /.content-header -->
+@include('Backend.Penjual.Event.modal')
 
-    <!-- Main content -->
+    <div class="content-wrapper" style="background:transparent">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Daftar Event Saya</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <a class="btn btn-lg btn-primary buton-modal" style="float:right" href="javascript:void(0)" id="buat-event">Buat Event</a>
+                </div>
+                </div><!-- /.row -->
+                <hr style="border: 3px solid #a7a7a7">
+            </div><!-- /.container-fluid -->
+        </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -61,7 +63,52 @@
                 </div>
             </div>
         </section>
-    <!-- /.content -->
+        <!-- /.content -->
   </div>
+
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="/backend/plugins/summernote/summernote-bs4.css">
+@endsection
+
+@section('js')
+    <script src="/backend/plugins/summernote/summernote-bs4.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            });
+
+                $('#buat-event').click(function () {
+                $('.modal-title').html('Buat Event');
+                $('#form-buat-event').trigger("reset");
+                $('#modal-buat-event').modal({backdrop: 'static', keyboard: false});
+                $('#modal-buat-event').modal('show');
+            });
+
+            $.ajax({
+                url: "{{ url('admin/kategori') }}",
+                method: "GET",
+                dataType: "json",
+                success: function (berhasil) {
+                    $.each(berhasil.data, function (key, value) {
+                        $('#id_kategori').append(
+                            `
+                            <option value="${value.id}">
+                                ${value.nama_kategori}
+                            </option>
+                            `
+                        )
+                    })
+                },
+                error: function () {
+                    console.log('data tidak ada');
+                }
+            });
+    });
+</script>
 
 @endsection

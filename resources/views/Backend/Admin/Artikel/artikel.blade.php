@@ -94,6 +94,7 @@
             });
 
                 $('#tambah-artikel').click(function () {
+                $('.modal-title').html('Tambah Artikel');
                 $('#form').trigger("reset");
                 $('#modal').modal({backdrop: 'static', keyboard: false});
                 $('#modal').modal('show');

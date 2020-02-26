@@ -87,6 +87,7 @@
             });
 
                 $('#tambah-kategori').click(function () {
+                $('.modal-title').html('Tambah Kategori')
                 $('#form').trigger("reset");
                 $('#modal').modal({backdrop: 'static', keyboard: false});
                 $('#modal').modal('show');

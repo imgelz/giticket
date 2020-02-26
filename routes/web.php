@@ -61,4 +61,5 @@ Route::group(['prefix' => 'penjual'], function () {
         return view('Backend.Penjual.index');
     });
     Route::get('/event', 'EventController@index');
+    Route::get('/tiket', 'TiketController@index');
 });
