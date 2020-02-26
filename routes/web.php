@@ -40,7 +40,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //     return view('Backend.Admin.index');
 // });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
     Route::get('/', function () {
         return view('Backend.Admin.index');
     });
