@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <div class="col-lg-12">
                         <label for="name" class="control-label">Nama Event*</label>
-                        <input type="text" class="form-control" id="nama_event" name="nama_event" placeholder=" nama event" maxlength="50" autocomplete="off" onchange="previewImage();">
+                        <input type="text" class="form-control" id="nama_event" name="nama_event" placeholder=" nama event" maxlength="50" autocomplete="off">
                     </div>
                 </div>
                  <div class="form-group">
@@ -38,19 +38,19 @@
                     <div class="row" style="margin-left:0.1rem">
                         <div class="col-lg-3">
                             <label for="name" class="control-label">Tanggal Mulai*</label>
-                            <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" maxlength="50" autocomplete="off" onchange="previewImage();">
+                            <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" maxlength="50" autocomplete="off">
                         </div>
                         <div class="col-lg-3">
                             <label for="name" class="control-label">Tanggal Selesai*</label>
-                            <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" maxlength="50" autocomplete="off" onchange="previewImage();">
+                            <input type="date" class="form-control" id="tanggal_selesai" name="tanggal_selesai" maxlength="50" autocomplete="off">
                         </div>
                         <div class="col-lg-2">
                             <label for="name" class="control-label">Waktu Mulai*</label>
-                            <input type="time" class="form-control" id="waktu_mulai" name="waktu_mulai" maxlength="50" autocomplete="off" onchange="previewImage();">
+                            <input type="time" class="form-control" id="waktu_mulai" name="waktu_mulai" maxlength="50" autocomplete="off">
                         </div>
                         <div class="col-lg-2">
                             <label for="name" class="control-label">Waktu Selesai*</label>
-                            <input type="time" class="form-control" id="waktu_selesai" name="waktu_selesai" maxlength="50" autocomplete="off" onchange="previewImage();">
+                            <input type="time" class="form-control" id="waktu_selesai" name="waktu_selesai" maxlength="50" autocomplete="off">
                         </div>
                         <div class="col-lg-2">
                             <label for="name" class="control-label">Format Waktu*</label>

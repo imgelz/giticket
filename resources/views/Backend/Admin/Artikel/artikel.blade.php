@@ -36,9 +36,9 @@
                                 <table id="dataTable" class="table table-bordered table-striped dataTable">
                                     <thead class="thead">
                                         <tr>
-                                            <th class="col-1"\>No</th>
+                                            <th>No</th>
                                             <th>Judul</th>
-                                            <th>Foto</th>
+                                            <th width="30%">Foto</th>
                                             <th width="40%">Deskripsi</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -58,20 +58,16 @@
 @endsection
 
 @section('css')
-<!-- DataTables -->
 <link rel="stylesheet" href="/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-<!-- Sweetalert -->
-{{-- <link rel="stylesheet" href="/backend/sweetalert/package/dist/sweetalert2.css"> --}}
 <link rel="stylesheet" href="/backend/sweetalert2/package/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="/backend/plugins/summernote/summernote-bs4.css">
 @endsection
 
 @section('js')
-  <!-- DataTables -->
 <script src="/backend/plugins/datatables/jquery.dataTables.js"></script>
 <script src="/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- Sweetalert -->
-{{-- <script> src="/backend/sweetalert/package/dist/sweetalert2.js"</script> --}}
-<script> src="/backend/sweetalert2/package/dist/sweetalert2.min.js"</script>
+<script src="/backend/sweetalert2/package/dist/sweetalert2.min.js"></script>
+<script src="/backend/plugins/summernote/summernote-bs4.min.js"></script>
 <script type="text/javascript">
     $(function () {
             $.ajaxSetup({

@@ -25,17 +25,18 @@ class ArtikelController extends Controller
                 ->addIndexColumn()
                 ->addColumn('aksi', function ($row) {
                     $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" title="Edit" class="btn btn-warning btn-sm edit-artikel"><i class="nav-icon fas fa-pen" style="color:white"></i></a>';
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" title="Hapus" class="btn btn-danger btn-sm hapus-artikel"><i class="nav-icon fas fa-trash" style="width:15px"></i></a>';                    return $btn;
+                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" title="Hapus" class="btn btn-danger btn-sm hapus-artikel"><i class="nav-icon fas fa-trash" style="width:15px"></i></a>';
+                    return $btn;
                 })
                 ->addColumn('foto', function ($data) {
-                    $img = '<img src="/assets/img/artikel/' . $data->foto . '" alt="" width="100%" height="15%">';
+                    $img = '<img src="/assets/img/artikel/' . $data->foto . '" alt="" width="100%">';
                     return $img;
                 })
                 ->addColumn('konten', function ($data) {
-                    $kon = Str::limit($data->konten,600);
+                    $kon = Str::limit($data->konten, 400);
                     return $kon;
                 })
-                ->rawColumns(['aksi','foto','konten'])
+                ->rawColumns(['aksi', 'foto', 'konten'])
                 ->make(true);
         }
         return view('Backend.Admin.Artikel.artikel');
@@ -63,7 +64,7 @@ class ArtikelController extends Controller
 
         // create
         if (is_null($request->id)) {
-            $foto = Str::random(6).$request->file('foto')->getClientOriginalName();
+            $foto = Str::random(6) . $request->file('foto')->getClientOriginalName();
             $request->foto->move(public_path('/assets/img/artikel'), $foto);
             Artikel::updateOrCreate(
                 ['id' => $request->id],
@@ -99,7 +100,7 @@ class ArtikelController extends Controller
                 if (File::exists($image_path)) {
                     File::delete($image_path);
                 }
-                $foto = Str::random(6).$request->file('foto')->getClientOriginalName();
+                $foto = Str::random(6) . $request->file('foto')->getClientOriginalName();
                 $request->foto->move(public_path('/assets/img/artikel'), $foto);
                 Artikel::updateOrCreate(
                     ['id' => $request->id],
@@ -158,7 +159,7 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $artikel = Artikel::findOrFail($request->id);
         if (!artikel::destroy($request->id)) {

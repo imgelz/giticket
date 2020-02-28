@@ -25,41 +25,43 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box card" style="border:1px solid #71707085">
-                            <a href=""><img class="card-img-top" src="/frontend/images/konser.jpg" alt="Card image cap"></a>
-                            <div class="card-body fade-in">
-                                <h5 class="card-title">Card Title</h5>
-                                <br>
-                                <small style="color:#e86b32">Kategori</small>
-                                <br><hr>
-                                <div class="row">
-                                    <div class="col-sm-1" style="">
-                                        <img src="/frontend/icon/calendar.png" width="20px">
+                    @foreach ($event as $item)
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box card" style="border:1px solid #71707085">
+                                <a href=""><img class="card-img-top" src="/assets/front/event/{{ $item->spanduk }}" alt="Card image cap"></a>
+                                <div class="card-body fade-in">
+                                    <h5 class="card-title">{{ $item->nama_event }}</h5>
+                                    <br>
+                                    <small style="color:#e86b32">{{ $item->id_kategori }}</small>
+                                    <br><hr>
+                                    <div class="row">
+                                        <div class="col-sm-1" style="">
+                                            <img src="/frontend/icon/calendar.png" width="20px">
+                                        </div>
+                                        <div class="col-sm" style="">
+                                            <span style="margin-left:0.5rem; color:#948e8e">{{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d M Y')}} - {{ \Carbon\Carbon::parse($item->tanggal_selesai)->format('d M Y')}}</span>
+                                        </div>
                                     </div>
-                                    <div class="col-sm" style="">
-                                        <span style="margin-left:0.5rem; color:#948e8e">20 Feb 2020 - 25 Feb 2020</span>
+                                    <div class="row" style="margin-top:0.5rem">
+                                        <div class="col-sm-1" style="">
+                                            <img src="/frontend/icon/clock.png" width="20px">
+                                        </div>
+                                        <div class="col-sm" style="">
+                                            <span style="margin-left:0.5rem; color:#948e8e">{{ \Carbon\Carbon::parse($item->waktu_mulai)->format('H:i')}} - {{ \Carbon\Carbon::parse($item->waktu_selesai)->format('H:i')}}  {{ $item->format_waktu }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row" style="margin-top:0.5rem">
-                                    <div class="col-sm-1" style="">
-                                        <img src="/frontend/icon/clock.png" width="20px">
-                                    </div>
-                                    <div class="col-sm" style="">
-                                        <span style="margin-left:0.5rem; color:#948e8e">09:00 - 10:00  WIB</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top:0.5rem">
-                                    <div class="col-sm-1" style="">
-                                        <img src="/frontend/icon/pin.png" width="20px">
-                                    </div>
-                                    <div class="col-sm" style="">
-                                        <span style="margin-left:0.5rem; color:#948e8e">Gedung Sasana Budaya Ganesha,Bandung</span>
+                                    <div class="row" style="margin-top:0.5rem">
+                                        <div class="col-sm-1" style="">
+                                            <img src="/frontend/icon/pin.png" width="20px">
+                                        </div>
+                                        <div class="col-sm" style="">
+                                            <span style="margin-left:0.5rem; color:#948e8e">{{ $item->lokasi }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -85,16 +87,47 @@
                 $('#buat-event').click(function () {
                 $('.modal-title').html('Buat Event');
                 $('#form-buat-event').trigger("reset");
+                $('#image-preview').trigger("reset");
                 $('#modal-buat-event').modal({backdrop: 'static', keyboard: false});
                 $('#modal-buat-event').modal('show');
             });
 
+            $('#simpan').click(function (e) {
+                e.preventDefault();
+                // $(this).hide();
+                var formdata = new FormData($('#form-buat-event')[0]);
+                $.ajax({
+                    data: formdata,
+                    url: "{{ url('/penjual/event-store') }}",
+                    type: "POST",
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $('#form-buat-event').trigger("reset");
+                        $('#modal-buat-event').modal('hide');
+                        table.draw();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    },
+                    error: function (request, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+
             $.ajax({
-                url: "{{ url('admin/kategori') }}",
+                url: "{{ url('event-kategori') }}",
                 method: "GET",
                 dataType: "json",
                 success: function (berhasil) {
                     $.each(berhasil.data, function (key, value) {
+                        console.log(value);
+
                         $('#id_kategori').append(
                             `
                             <option value="${value.id}">

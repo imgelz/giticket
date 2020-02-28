@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="/backend/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="/backend/plugins/summernote/summernote-bs4.css">
+
   <style>
       .card{
           border:2px solid #e2e2e2;
@@ -54,6 +56,8 @@
 <script src="/backend/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/backend/dist/js/demo.js"></script>
+<script src="/backend/plugins/summernote/summernote-bs4.min.js"></script>
+
 @yield('js')
 </body>
 </html>

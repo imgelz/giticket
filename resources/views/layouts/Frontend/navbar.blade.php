@@ -17,15 +17,6 @@
                     @endrole
                     @role('member')
                         <li class="nav-item"><a href="#" class="nav-link">Masuk</a></li>
-                        {{-- @if (Auth::user()->id_penjual()->count() > 0)
-                            <li class="nav-item"><a href="#" class="nav-link">Masuk</a></li>
-                        @elseif (Auth::user()->id_penjual()->count() == 0)
-                            <li class="nav-item"><a href="{{ route('logout') }}"onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" class="nav-link">Keluar</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form></li>
-                        @endif --}}
                     @endrole
                 @else
                     <li class="nav-item"><a href="{{url('/login')}}" class="nav-link">Login</a></li>

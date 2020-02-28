@@ -20,51 +20,23 @@
           </div>
         </div>
         <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('/frontend/images/image_1.jpg');">
-              </a>
-              <div class="text">
-              	<span class="tag">Tips, Travel</span>
-                <h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>
+            @foreach ($artikel as $item)
+            <div class="col-md-4 d-flex ftco-animate">
+                <div class="blog-entry align-self-stretch">
+                    <a href="" class="block-20" style="background-image: url('/assets/img/artikel/{{ $item->foto }}'); width:350px">
+                </a>
+                <div class="text">
+                    <span class="tag">Tips, Travel</span>
+                    <h3 class="heading mt-3"><a href="/blog/{{ $item->slug }}">{{ $item->judul }}</a></h3>
                 <div class="meta mb-3">
-                  <div><a href="#">October 3, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                    <div><a>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y')}}</a></div>
+                    <div><a>|</a></div>
+                    <div><a>Admin</a></div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('/frontend/images/image_2.jpg');">
-              </a>
-              <div class="text">
-              	<span class="tag">Culture</span>
-                <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta mb-3">
-                  <div><a href="#">October 3, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('/frontend/images/image_3.jpg');">
-              </a>
-              <div class="text">
-              	<span class="tag">Tips, Travel</span>
-                <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta mb-3">
-                  <div><a href="#">October 3, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
-              </div>
             </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>
