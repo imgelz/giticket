@@ -19,14 +19,14 @@
                  <div class="form-group">
                     <div class="col-lg-12">
                         <label for="name" class="control-label">Pilih Event*</label>
-                        <select name="id_event" id="id_event" class="form-control" placeholder="Pilih Event">
+                        <select id="id_event" name="id_event" class="form-control" placeholder="Pilih Event">
                             <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <label for="name" class="control-label">Pilih Event*</label>
+                        <label for="name" class="control-label">Harga*</label>
                         <div class="input-group mb-6">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Rp</span>
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <div class="col-lg-12">
                         <label for="name" class="control-label">Deskripsi*</label>
-                        <textarea class="textarea" name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="7"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="7"></textarea>
                     </div>
                 </div>
             </form>
@@ -61,9 +61,3 @@
         padding: .1rem .1rem;
     }
 </style>
-<script>
-    $(function () {
-    // Summernote
-    $('.textarea').summernote()
-  })
-</script>

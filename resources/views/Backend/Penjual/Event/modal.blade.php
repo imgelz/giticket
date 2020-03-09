@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-lg-2">
                             <label for="name" class="control-label">Format Waktu*</label>
-                            <select class="custom-select" id="inputGroupSelect01" name="format_waktu">
+                            <select class="custom-select" id="format_waktu" name="format_waktu">
                                 <option value=""></option>
                                 <option value="WIB">WIB</option>
                                 <option value="WITA">WITA</option>
@@ -72,13 +72,13 @@
                 <div class="form-group">
                     <div class="col-lg-12">
                         <label for="name" class="control-label">Deskripsi*</label>
-                        <textarea class="textarea" name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="7"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control" cols="30" rows="7"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-12">
                         <label for="name" class="control-label">Syarat & Ketentuan*</label>
-                        <textarea class="textarea" name="syarat" id="syarat" class="form-control" cols="30" rows="7"></textarea>
+                        <textarea name="syarat" id="syarat" class="form-control" cols="30" rows="7"></textarea>
                     </div>
                 </div>
             </form>

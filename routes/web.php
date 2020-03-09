@@ -24,13 +24,11 @@ Route::get('/blog/{blog}', 'FrontendController@singleartikel');
 Route::get('/contact', function () {
     return view('Frontend.contact');
 });
-Route::get('/single-artikel', function () {
-    return view('Frontend.single-artikel');
-});
+// Route::get('/single-artikel', function () {
+//     return view('Frontend.single-artikel');
+// });
 
-Route::get('/event/single-event', function () {
-    return view('Frontend.single-event');
-});
+Route::get('/event/{event}', 'FrontendController@singleevent');
 
 Route::post('/contact-us', 'ContactController@store');
 
@@ -65,5 +63,8 @@ Route::group(['prefix' => 'penjual', 'middleware' => ['auth', 'role:member']], f
     });
     Route::get('/event', 'EventController@index');
     Route::post('/event-store', 'EventController@store');
+    Route::get('/event/{id}/edit', 'EventController@edit');
     Route::get('/tiket', 'TiketController@index');
+    Route::get('/get-tiket', 'TiketController@event');
+    Route::post('/tiket-store', 'TiketController@store');
 });

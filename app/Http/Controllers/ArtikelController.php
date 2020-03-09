@@ -162,7 +162,7 @@ class ArtikelController extends Controller
     public function destroy(Request $request)
     {
         $artikel = Artikel::findOrFail($request->id);
-        if (!artikel::destroy($request->id)) {
+        if (!Artikel::destroy($request->id)) {
             return redirect()->back();
         } else {
             $artikel->delete();

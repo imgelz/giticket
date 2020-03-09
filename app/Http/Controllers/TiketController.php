@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tiket;
+use App\Event;
+use Auth;
+use DB;
+use Illuminate\Support\Str;
 
 class TiketController extends Controller
 {
@@ -14,7 +18,8 @@ class TiketController extends Controller
      */
     public function index()
     {
-        return view('Backend.Penjual.Tiket.tiket');
+        $tiket = Tiket::where('id_user', Auth::user()->id)->latest()->get();
+        return view('Backend.Penjual.Tiket.tiket', compact('tiket'));
     }
 
     /**
@@ -35,7 +40,31 @@ class TiketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'nama_tiket' => 'required',
+                'jumlah_tiket' => 'required',
+                'harga' => 'required',
+                'deskripsi' => 'required',
+                'id_event' => 'required'
+            ]
+        );
+
+        $slug = Str::slug($request->nama_tiket, '-');
+        $id_user = Auth::user()->id;
+
+        Tiket::updateOrCreate(
+            ['id' => $request->id],
+            [
+                'nama_tiket' => $request->nama_tiket,
+                'jumlah_tiket' => $request->jumlah_tiket,
+                'harga' => $request->harga,
+                'deskripsi' => $request->deskripsi,
+                'slug' => $slug,
+                'id_event' => $request->id_event,
+                'id_user' => $id_user,
+            ]
+        );
     }
 
     /**
@@ -81,5 +110,11 @@ class TiketController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function event()
+    {
+        $event = Event::where('id_user', Auth::user()->id)->latest()->get();
+        return response()->json($event);
     }
 }

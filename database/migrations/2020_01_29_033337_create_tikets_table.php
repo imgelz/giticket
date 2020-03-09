@@ -23,6 +23,9 @@ class CreateTiketsTable extends Migration
 
             $table->unsignedBigInteger('id_event');
             $table->foreign('id_event')->references('id')->on('events');
+
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

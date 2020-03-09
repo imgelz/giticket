@@ -17,9 +17,9 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $event = Event::where('id_user', Auth::user()->id)->get();
+        $event = Event::with('kategori')->where('id_user', Auth::user()->id)->latest()->get();
         return view('Backend.Penjual.Event.event', compact('event'));
     }
 
@@ -83,7 +83,6 @@ class EventController extends Controller
                         'lokasi' => $request->lokasi,
                         'deskripsi' => $request->deskripsi,
                         'syarat' => $request->syarat,
-                        'spanduk' => $spanduk,
                         'slug' => $slug,
                         'id_kategori' => $request->id_kategori,
                         'id_user' => $id_user,
@@ -145,7 +144,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+        return response()->json($event);
     }
 
     /**

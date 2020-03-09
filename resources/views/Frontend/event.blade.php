@@ -23,7 +23,7 @@
                 @foreach ($kategori as $item)
                 <div class="col-md-4 ftco-animate">
     				<div class="destination kategori">
-    					<a href="/kategori/{{ $item->slug}}" class="img img-2 kate d-flex justify-content-center align-items-center" style="background-image: url(/assets/img/kategori/{{$item->foto}}) ;">
+    					<a href="/kategori/{{ $item->slug}}" target="_blank" class="img img-2 kate d-flex justify-content-center align-items-center" style="background-image: url(/assets/img/kategori/{{$item->foto}}) ;">
     						<div>
     							<h3 style="color:white;"><b>{{$item->nama_kategori}}</b></h3>
     						</div>
@@ -96,44 +96,48 @@
     	</div>
     	<div class="container-fluid">
     		<div class="row">
-                <div class="col-lg-3 col-6" style="margin-bottom:1rem">
-                    <div class="small-box card" style="border:1px solid #71707085">
-                        <a href=""><img class="card-img-top" src="/frontend/images/konser.jpg" alt="Card image cap" style="height:170px"></a>
-                        <div class="card-body fade-in">
-                            <h5 class="card-title" style="margin-bottom:-0.5rem">Card Title</h5>
-                            <br>
-                            <div class="row">
-                                <div class="col-sm" style="margin-bottom:0.5rem">
-                                    <small style="margin-left:; color:#e86b32">Kategori</small>
+                @foreach ($event as $data)
+                    <div class="col-lg-3 col-6" style="margin-bottom:1rem">
+                        <a href="/event/{{ $data->slug }}" target="_blank">
+                            <div class="small-box card" style="border:1px solid #71707085">
+                                <img class="card-img-top" src="/assets/front/event/{{ $data->spanduk }}" alt="Card image cap" style="height:170px">
+                                <div class="card-body fade-in">
+                                    <h5 class="card-title" style="margin-bottom:-0.5rem">{{ $data->nama_event }}</h5>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm" style="margin-bottom:0.5rem">
+                                            <small style="margin-left:; color:#e86b32">{{ $data->kategori->nama_kategori }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1" style="">
+                                            <img src="/frontend/icon/calendar.png" width="20px">
+                                        </div>
+                                        <div class="col-sm" style="">
+                                            <span style="margin-left:; color:#948e8e">{{ \Carbon\Carbon::parse($data->tanggal_mulai)->format('d M Y')}} - {{ \Carbon\Carbon::parse($data->tanggal_selesai)->format('d M Y')}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:0.5rem">
+                                        <div class="col-sm-1" style="">
+                                            <img src="/frontend/icon/clock.png" width="20px">
+                                        </div>
+                                        <div class="col-sm" style="">
+                                            <span style="margin-left:; color:#948e8e">{{ \Carbon\Carbon::parse($data->waktu_mulai)->format('H:i')}} - {{ \Carbon\Carbon::parse($data->waktu_selesai)->format('H:i')}}  {{ $data->format_waktu }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:0.5rem">
+                                        <div class="col-sm-1" style="">
+                                            <img src="/frontend/icon/pin.png" width="20px">
+                                        </div>
+                                        <div class="col-sm" style="">
+                                            <span style="margin-left:; color:#948e8e">{{ $data->lokasi }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-1" style="">
-                                    <img src="/frontend/icon/calendar.png" width="20px">
-                                </div>
-                                <div class="col-sm" style="">
-                                    <span style="margin-left:; color:#948e8e">20 Feb 2020 - 25 Feb 2020</span>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top:0.5rem">
-                                <div class="col-sm-1" style="">
-                                    <img src="/frontend/icon/clock.png" width="20px">
-                                </div>
-                                <div class="col-sm" style="">
-                                    <span style="margin-left:; color:#948e8e">09:00 - 10:00  WIB</span>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top:0.5rem">
-                                <div class="col-sm-1" style="">
-                                    <img src="/frontend/icon/pin.png" width="20px">
-                                </div>
-                                <div class="col-sm" style="">
-                                    <span style="margin-left:; color:#948e8e">Gedung Sasana Budaya Ganesha,Bandung</span>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
+                @endforeach
     		</div>
     	</div>
     </section>

@@ -25,78 +25,36 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="card mb-3" style="border:1px solid #d7d7d7">
-                            <div class="card-body">
-                                <div class="tiketnya">
-                                    <b style="font-size:1.5rem; color:#686868">Presale Ticket</b>
-                                </div>
-                                <hr>
-                                <div class="destik">
-                                    <small style="color:#a7a7a7">sdapsdapsdapsdapsdap</small>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm harga">
-                                        <b style="font-size:1.8rem; color:#686868">Rp 5000</b>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">20</span>
+                    @foreach ($tiket as $item)
+                        <div class="col-6">
+                            <div class="card mb-3" style="border:1px solid #d7d7d7">
+                                <div class="card-body">
+                                    <div class="row" style="margin-top:-0.5rem; margin-bottom:-0.5rem">
+                                        <div class="col-sm tiketnya">
+                                            <b style="font-size:1.5rem; color:#686868">{{ $item->nama_tiket }}</b>
                                         </div>
+                                        <div class="col-sm-1.5">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">{{ $item->jumlah_tiket }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="destik">
+                                        <small style="color:#a7a7a7">{{ $item->deskripsi }}</small>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm harga">
+                                            <b style="font-size:1.8rem; color:#686868">Rp {{ $item->harga }}</b>
+                                        </div>
+                                        <div class="col-sm-1"><a href="javascript:void(0)" id="edit-event" title="Ubah" ><i class="fa fa-pencil-alt"></i></a></div>
+                                        <div class="col-sm-1"><a href="javascript:void(0)" id="hapus-event" title="Hapus" ><i class="fa fa-trash-alt"></i></a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                     <div class="col-6">
-                        <div class="card mb-3" style="border:1px solid #d7d7d7">
-                            <div class="card-body">
-                                <div class="tiketnya">
-                                    <b style="font-size:1.5rem; color:#686868">Presale Ticket</b>
-                                </div>
-                                <hr>
-                                <div class="destik">
-                                    <small style="color:#a7a7a7">sdapsdapsdapsdapsdap</small>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm harga">
-                                        <b style="font-size:1.8rem; color:#686868">Rp 5000</b>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">20</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-6">
-                        <div class="card mb-3" style="border:1px solid #d7d7d7">
-                            <div class="card-body">
-                                <div class="tiketnya">
-                                    <b style="font-size:1.5rem; color:#686868">Presale Ticket</b>
-                                </div>
-                                <hr>
-                                <div class="destik">
-                                    <small style="color:#a7a7a7">sdapsdapsdapsdapsdap</small>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm harga">
-                                        <b style="font-size:1.8rem; color:#686868">Rp 5000</b>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">20</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -126,12 +84,42 @@
                 $('#modal-buat-tiket').modal('show');
             });
 
+            $('#simpan').click(function (e) {
+                e.preventDefault();
+                // $(this).hide();
+                var formdata = new FormData($('#form-buat-tiket')[0]);
+                $.ajax({
+                    data: formdata,
+                    url: "{{ url('/penjual/tiket-store') }}",
+                    type: "POST",
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $('#form-buat-tiket').trigger("reset");
+                        $('#modal-buat-tiket').modal('hide');
+                        table.draw();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    },
+                    error: function (request, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+
             $.ajax({
-                url: "{{ url('penjual/event') }}",
+                url: "{{ url('penjual/get-tiket') }}",
                 method: "GET",
                 dataType: "json",
                 success: function (berhasil) {
-                    $.each(berhasil.data, function (key, value) {
+                    $.each(berhasil, function (key, value) {
+                        console.log(value);
                         $('#id_event').append(
                             `
                             <option value="${value.id}">
@@ -146,6 +134,12 @@
                 }
             });
     });
+</script>
+<script>
+    $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
 </script>
 
 @endsection
