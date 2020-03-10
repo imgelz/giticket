@@ -64,6 +64,7 @@ Route::group(['prefix' => 'penjual', 'middleware' => ['auth', 'role:member']], f
     Route::get('/event', 'EventController@index');
     Route::post('/event-store', 'EventController@store');
     Route::get('/event/{id}/edit', 'EventController@edit');
+    Route::get('/tiket/{id}/edit', 'TiketController@edit');
     Route::get('/tiket', 'TiketController@index');
     Route::get('/get-tiket', 'TiketController@event');
     Route::post('/tiket-store', 'TiketController@store');

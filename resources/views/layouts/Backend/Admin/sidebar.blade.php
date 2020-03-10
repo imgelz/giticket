@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="/backend/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -24,25 +24,43 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item ">
-            <a class="nav-link {{ Request::segment(1) == 'admin/artikel' ? 'active':''}}" href="{{url('/admin/artikel')}}">
+            <a class="nav-link {{ Request::segment(1) == 'admin' ? 'active':''}}" href="{{url('/admin')}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item ">
+            <a class="nav-link {{ Request::segment(1) == '/admin/artikel' ? 'active':''}}" href="{{url('/admin/artikel')}}">
               <i class="nav-icon fas fa-th"></i>
               <p>Blog Artikel</p>
             </a>
           </li>
+        </ul>
+
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a class="nav-link {{ Request::segment(1) == '/admin/kategori'? 'active':''}}" href="{{url('/admin/kategori')}}">
+            <a class="nav-link {{ Request::segment(1) == '/admin/kategori' ? 'active':''}}" href="{{url('/admin/kategori')}}">
               <i class="nav-icon fas fa-th"></i>
               <p>Kategori</p>
             </a>
           </li>
+        </ul>
+
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a class="nav-link {{ Request::segment(1) == '/admin/data-penjual'? 'active':''}}" href="{{url('/admin/data-penjual')}}">
+            <a class="nav-link {{ Request::segment(1) == '/admin/data-penjual' ? 'active':''}}" href="{{url('/admin/data-penjual')}}">
               <i class="nav-icon fas fa-th"></i>
               <p>Penjual</p>
             </a>
           </li>
+        </ul>
+
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a class="nav-link {{ Request::segment(1) == '/admin/pesan-publik'? 'active':''}}" href="{{url('/admin/pesan-publik')}}">
+            <a class="nav-link {{ Request::segment(1) == '/admin/pesan-publik' ? 'active':''}}" href="{{url('/admin/pesan-publik')}}">
               <i class="nav-icon fas fa-th"></i>
               <p>Pesan Publik</p>
             </a>

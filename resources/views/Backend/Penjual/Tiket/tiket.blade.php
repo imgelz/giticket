@@ -25,6 +25,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
+                    @if($tiket->count() > 0)
                     @foreach ($tiket as $item)
                         <div class="col-6">
                             <div class="card mb-3" style="border:1px solid #d7d7d7">
@@ -48,13 +49,22 @@
                                         <div class="col-sm harga">
                                             <b style="font-size:1.8rem; color:#686868">Rp {{ $item->harga }}</b>
                                         </div>
-                                        <div class="col-sm-1"><a href="javascript:void(0)" id="edit-event" title="Ubah" ><i class="fa fa-pencil-alt"></i></a></div>
-                                        <div class="col-sm-1"><a href="javascript:void(0)" id="hapus-event" title="Hapus" ><i class="fa fa-trash-alt"></i></a></div>
+                                        <div class="col-sm-1"><a href="javascript:void(0)" id="edit-tiket" data-id="{{ $item->id }}" title="Ubah" ><i class="fa fa-pencil-alt"></i></a></div>
+                                        <div class="col-sm-1"><a href="javascript:void(0)" id="hapus-tiket" title="Hapus" ><i class="fa fa-trash-alt"></i></a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                    @elseif ($tiket->count() == 0)
+                        <div class="container" style="margin-top:7rem">
+                            <center>
+                                <img src="/backend/icon/tickets.png">
+                                <h1 style="color:black" class="display-4">Belum Ada Tiket</h1>
+                                <p class="lead">Silakan buat tiket eventmu dengan klik button “Buat Tiket Event” di atas.</p></<h1>
+                            </center>
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -109,6 +119,23 @@
                     error: function (request, status, error) {
                         console.log(error);
                     }
+                });
+            });
+
+            $('#edit-tiket').click(function(){
+                var idTiket = $(this).data('id');
+                $.get("{{ url('penjual/tiket') }}"+"/"+idTiket+"/edit", function(data){
+                    // console.log(data);
+                    $('.modal-title').html('Edit Tiket Event');
+                    $('#modal-buat-tiket').modal({backdrop: 'static', keyboard: false});
+                    $('#modal-buat-tiket').modal('show');
+                    $('#data-id').val(data.id);
+                    $('#nama_tiket').val(data.nama_tiket);
+                    $('#id_kategori').val('')
+                    $('#id_event').val(data.id_event);
+                    $('#jumlah_tiket').val(data.jumlah_tiket);
+                    $('#harga').val(data.harga);
+                    $('#deskripsi').html(data.deskripsi);
                 });
             });
 

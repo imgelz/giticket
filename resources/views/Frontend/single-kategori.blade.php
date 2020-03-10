@@ -12,9 +12,12 @@
     </section>
 
     <section class="ftco-section cari" style="background-color:#112041" >
-        <div class="container">
+        <div class="container" style="margin-bottom:-4rem">
 			<div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
+                    <div class="md-form mt-0">
+                        <input id="search" class="form-control" type="text" placeholder="Search" autocomplete="off">
+                    </div>
                 </div>
             </div>
     	</div>
@@ -22,9 +25,9 @@
 
     <section class="ftco-section">
     	<div class="container-fluid">
-    		<div class="row">
+    		<div class="row eventnya">
                 @foreach ($event as $data)
-                    <div class="col-lg-3 col-6" style="margin-bottom:1rem">
+                    <div class="col-lg-3 col-6 data-event" style="margin-bottom:1rem">
                         <a href="/event/{{ $data->slug }}" target="_blank">
                             <div class="small-box card" style="border:1px solid #71707085">
                                 <img class="card-img-top" src="/assets/front/event/{{ $data->spanduk }}" alt="Card image cap" style="height:170px">
@@ -63,7 +66,7 @@
     		</div>
     	</div>
     </section>
-    <hr>
+    {{-- <hr>
     <center><div class="col-md-6">
         <div class="boxed-3rd">
             <h5>Metode Pembayaran :</h5>
@@ -73,5 +76,35 @@
                 </figure>
             </ul>
         </div>
-    </div></center>
+    </div></center> --}}
+    <div class="container not-search" hidden>
+        <center>
+            <img src="/frontend/img/home/png/not-search.png">
+            <h5 style="color:black" class="display-5">No matching records found</h5>
+            <p class="lead">Please enter your search data correctly.</p>
+        </center>
+    </div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function($){
+
+            $('#search').keyup(function(){
+                var val = $(this).val().toLowerCase();
+                $(".eventnya .data-event").hide();
+                $(".eventnya .data-event").each(function(){
+                    var text = $(this).text().toLowerCase();
+                    if(text.indexOf(val) != -1)
+                    {
+                        $(this).show();
+                    }else if(text.indexOf(val) != 0){
+                        $(".not-search").show();
+
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection

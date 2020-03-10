@@ -29,7 +29,7 @@
                         @foreach ($event as $item)
                             <div class="col-lg-3 col-6">
                                 <div class="small-box card" style="border:1px solid #71707085">
-                                    <img class="card-img-top" src="/assets/front/event/{{ $item->spanduk }}" alt="Card image cap">
+                                    <img class="card-img-top" src="/assets/front/event/{{ $item->spanduk }}" alt="Card image cap" style="height:130px">
                                     <div class="card-body fade-in">
                                         <h5 class="card-title">{{ $item->nama_event }}</h5>
                                         <br>

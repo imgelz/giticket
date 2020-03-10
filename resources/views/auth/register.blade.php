@@ -1,7 +1,71 @@
-@extends('layouts.app')
+@extends('layouts.Authentication.register')
 
 @section('content')
-<div class="container">
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+            <form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
+                @csrf
+                <span class="login100-form-title p-b-33">
+                    Daftar Akun
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate = "Nama is required">
+                    <input class="input100" type="text" id="name" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}">
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+
+                <div class="wrap-input100 rs1 validate-input" data-validate = "Valid email is required: example@gitick.id">
+                    <input class="input100" type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+
+                <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                    <input class="input100" type="password" id="password" name="password" placeholder="Password">
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+
+                <div class="wrap-input100 rs1 validate-input" data-validate="Confirm Password is required">
+                    <input class="input100" type="password" id="password-confirm" name="password_confirmation" placeholder="Konfirmasi Password">
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+
+                <div class="container-login100-form-btn m-t-20">
+                    <button type="submit" class="login100-form-btn">
+                        Daftar
+                    </button>
+                </div>
+
+                <div class="text-center p-t-45 p-b-4">
+                    {{-- <span class="txt1">
+                        Forgot
+                    </span>
+
+                    <a href="#" class="txt2 hov1">
+                        Username / Password?
+                    </a> --}}
+                </div>
+
+                <div class="text-center">
+                    <span class="txt1">
+                        Sudah punya akun?
+                    </span>
+
+                    <a href="/login" class="txt2 hov1">
+                        Masuk disini
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +137,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

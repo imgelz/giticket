@@ -1,7 +1,7 @@
 
 <html lang="en">
   <head>
-    <title>Gitick - Event</title>
+    <title>{{ $kategori->nama_kategori }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -48,6 +48,33 @@
         .cari{
             padding: 1em 0;
             position: relative;
+        }
+        .form-control:focus, .form-control:active {
+            border-color: #fff;
+        }
+        .form-control {
+            height: 40px !important;
+            background: transparent !important;
+            color: #fff !important;
+            font-size: 18px;
+            border-radius: 3px;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #fff;
+            border-radius: 0.25rem;
+            -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
         }
     </style>
       </head>

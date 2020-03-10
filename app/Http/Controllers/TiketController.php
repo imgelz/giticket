@@ -86,7 +86,8 @@ class TiketController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tiket = Tiket::find($id);
+        return response()->json($tiket);
     }
 
     /**

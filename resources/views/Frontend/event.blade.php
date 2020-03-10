@@ -23,7 +23,7 @@
                 @foreach ($kategori as $item)
                 <div class="col-md-4 ftco-animate">
     				<div class="destination kategori">
-    					<a href="/kategori/{{ $item->slug}}" target="_blank" class="img img-2 kate d-flex justify-content-center align-items-center" style="background-image: url(/assets/img/kategori/{{$item->foto}}) ;">
+    					<a href="/kategori/{{ $item->slug}}" class="img img-2 kate d-flex justify-content-center align-items-center" style="background-image: url(/assets/img/kategori/{{$item->foto}}) ;">
     						<div>
     							<h3 style="color:white;"><b>{{$item->nama_kategori}}</b></h3>
     						</div>
